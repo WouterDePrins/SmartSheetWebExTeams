@@ -1,8 +1,7 @@
 # Integration between SmartSheet and WebEx teams
 # This script can run as a FaaS at GCP and serves as a webhook for both WebEx Teams and SmartSheet.
 # When a row has been added to SmartSheet, it will push a message to this webhook and from here, we can parse the message and forward it to a WebEx Teams Room
-# On the other hand, we can ask the WebEx Teams Bot to check rows in the sheet.
-# I use this to check registrations for small events, so you can directly see who has subscribed in an event or ask the bot the full list of people.
+# On the other hand, we can ask the WebEx Teams Bot to list all the rows in the sheet.
 
 # Created by Wouter De Prins - System Engineer Data Center - Cisco Belgium
 
