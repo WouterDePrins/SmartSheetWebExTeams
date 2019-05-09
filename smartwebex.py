@@ -13,6 +13,7 @@ import json
 WebExBotName = ''
 WebExBearer = ''
 WebExRoom = ''
+WebExBotID = ''
 
 SmartSheetBearer = ''
 SmartSheetSheet = ''
@@ -100,10 +101,10 @@ def checkregistrations():
             smartsheet_row_text = getSmartText(z)
             values.append(str(createWebExReg(smartsheet_row_text)))
 
-        postWebEx('Here you have the current [registrations](https://app.smartsheet.com/sheets/JjP6mC7rW7468RJF8fVxGRRXmVRfG8WJqQwC9Jg1?view=grid) ('+ str(number) +'): \n- %s' % '\n- '.join(values))
+        postWebEx('Here you have the current registrations ('+ str(number) +'): \n- %s' % '\n- '.join(values))
 
     else: 
-        postWebEx('No [registrations](https://app.smartsheet.com/sheets/JjP6mC7rW7468RJF8fVxGRRXmVRfG8WJqQwC9Jg1?view=grid) yet.')
+        postWebEx('No registrations yet.')
 
 ## listens to incoming packets from SmartSheet WebHook and WebEx Teams webhook
 def webhookListener(request):
@@ -119,7 +120,7 @@ def webhookListener(request):
         if 'data' in body:
             messageId = body['data']['id']
             user_id = body["data"]["personId"]
-            if user_id != 'Y2lzY29zcGFyazovL3VzL1BFT1BMRS8wOTZkNjljMC00N2E2LTQwM2YtOTk1Ni03OGJjNzQyYTYwOGE':
+            if user_id != WebExBotID:
                 getMessage(messageId)
         else:
             for i in body['events']:
